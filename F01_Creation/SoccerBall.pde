@@ -1,24 +1,8 @@
 /* SoccerBall.pde
- *
- * Copyright 2018, 2019, 2020 Roland Richter
- *
- * This file is part of FisicaGame.
- *
- * FisicaGame is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty
- * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * Copyright 2018-2022 Roland Richter
  */
 
-// TOUR-12 I am the author of this file, and of all files of FisicaGame; 
+// TOUR-10 I am the author of this file, and of all files of FisicaGame; 
 //   it says so in the copyright notice above. You are NOT allowed to
 //   remove this copyright notice.
 //
@@ -50,19 +34,37 @@ public class SoccerBall extends FCircle
     }
     
     
-    public SoccerBall(float size)
+    public SoccerBall(float diam)
     {
-        this(size, #F2F3F4); // Anti-flash white, see http://latexcolor.com/
+        this(diam, #F2F3F4); // Anti-flash white, see http://latexcolor.com/
     }
     
     
-    public SoccerBall(float size, color col)
+    public SoccerBall(float diam, color clr)
     {
-        super(size);
-        this.setFillColor(col);
+        super(diam);
+        this.setFillColor(clr);
         
         this.setDamping(0.2);
         this.setDensity(3000.0);
         this.setRestitution(0.5);
     }
 }
+
+/* ----------------------------------------------------------------------
+ * This file is part of FisicaGame.
+ *
+ * FisicaGame is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+ 

@@ -1,21 +1,5 @@
 /* Plank.pde
- *
- * Copyright 2018, 2019, 2020 Roland Richter
- *
- * This file is part of FisicaGame.
- *
- * FisicaGame is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty
- * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * Copyright 2018-2022 Roland Richter
  */
 
 // TOUR-3 Here, a _class_ called Plank is declared.
@@ -46,40 +30,38 @@ public class Plank extends FBox
     // 
     //   The constructor takes three arguments to initialize this object:
     //   `w` is the width, `h` is the height of the plank; both values are 
-    //   decimal numbers of type float. `col` is the color of the plank.
+    //   decimal numbers of type float. `clr` is the color of the plank.
     //
     //   For more information on the types float and color,
     //   see https://www.processing.org/reference/float.html
     //   and https://www.processing.org/reference/color_datatype.html
-    public Plank(float w, float h, color col)
+    public Plank(float w, float h, color clr)
     {
         // TOUR-6
-        //   - super is a keyword; here it is used to call the constructor of
+        //   - `super` is a keyword; here it is used to call the constructor of
         //     the superclass of Plank, which is FBox
-        //   - this is a keyword; here it means "use the current object",
+        //   - `this` is a keyword; here it means "use the current object",
         //     and is redundant; you might as well delete it. (Try it!)
         //     I am used to write `this.` in front of any class method, but I
         //     think it is not very common to do so.
         super(w, h);
-        this.setFillColor(col);
+        this.setFillColor(clr);
         
         this.setDamping(0.2);
         this.setDensity(7000.0);
         this.setRestitution(0.1);
     }
     
-    // TOUR-7 Here is another constructor to be used if somebody only specifies
+    // TOUR-5-a Here is another constructor to be used if somebody only specifies
     //   `w` (width) and `h` (height) of the plank to be created. In this case,
     //   `w`, `h`, and a default color (namely, #80461B) is passed to the first
     //   constructor above.
-    //   Note that Processing has a color selector in the Tools menu, but I find
-    //   http://latexcolor.com/ more useful.
     public Plank(float w, float h)
     {
         this(w, h, #80461B); // Russet, see http://latexcolor.com/
     }
     
-    // TOUR-8 Yet another constructor to be used if somebody specifies nothing
+    // TOUR-5-b Yet another constructor to be used if somebody specifies nothing
     //   at all about the plank to be created; hence, we have to use default 
     //   values for width (350) and height (15) as well.
     //   Such a method is called _default constructor_.
@@ -88,3 +70,21 @@ public class Plank extends FBox
         this(350, 15);
     }
 }
+
+/* ----------------------------------------------------------------------
+ * This file is part of FisicaGame.
+ *
+ * FisicaGame is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+ 

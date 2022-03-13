@@ -1,21 +1,5 @@
-/* FisicaGame.pde
- *
- * Copyright 2018, 2019, 2020 Roland Richter
- *
- * This file is part of FisicaGame.
- *
- * FisicaGame is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty
- * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+/* F01_Creation.pde
+ * Copyright 2018-2022 Roland Richter
  */
 
 import fisica.*;
@@ -38,6 +22,7 @@ void setup()
     Fisica.setScale(150); // scale: 150 pixel = 1 m
 
     world = new FWorld();
+    
     world.setGravity(0, 300);
     world.setGrabbable(true);
     world.setEdges();
@@ -68,7 +53,7 @@ void setup()
     
     Plank plank = new Plank(350, 15);
     
-    // TOUR-9 Now that the object plank has been created, we can set some
+    // TOUR-7 Now that the object plank has been created, we can set some
     //   further properties of it; e.g., its position, and its name.
     //   Classes typically have many methods called getXYZ() and setXYZ()
     plank.setPosition(width/2, 300);
@@ -105,14 +90,13 @@ void setup()
     rightPingPong.setName("Ping pong ball #2");
     world.add(rightPingPong);
     
-    // HOMEWORK-1-b The world as populated above  -- with eight nails, a plank, and some
+    // HOMEWORK-1-b The world as populated above -- with eight nails, a plank, and some
     //   soccer and ping pong balls -- is not very creative; it's not really a "game".
     //   Think of some other world, and populate it with a number of objects.
 }
 
 
-float volume = 1;         // Starts with sound on 
-color bgcolor = #dece27;  // Starts with a decent background color
+color bgcolor = #EFDECD;  // Starts with a decent background color, "Almond"
 
 boolean paused = false;
 boolean debug = false;
@@ -127,9 +111,9 @@ void drawBackground()
     float luminance = (0.299 * red(bgcolor) + 0.587 * green(bgcolor) + 0.114 * blue(bgcolor))/255.0;
     
     if (luminance > 0.5)   // bright background - black font
-       fill(color(0,0,0));
+       fill(color(0, 0, 0));
     else                   // dark background - white font
-       fill(color(255,255,255));
+       fill(color(255, 255, 255));
     
     textSize(12);
     textAlign(RIGHT);
@@ -140,26 +124,20 @@ void drawBackground()
 void draw() 
 {
     if (paused)
-    {
         return;
-    }
 
     drawBackground();
    
     world.step();
 
     if (debug) 
-    {
         world.drawDebug();
-    } 
     else 
-    {
         world.draw();
-    }
 }
 
 
-// TOUR-11 `keyPressed()` is called whenever a key is pressed -- you might have
+// TOUR-9 `keyPressed()` is called whenever a key is pressed -- you might have
 //   guessed ... Since I do not care whether the key is lower- or uppercase,
 //   my code always tests whether the lowercase or uppercase key was pressed.
 //   Just try what happens if you press 'b' or 'D' or 'N' ...
@@ -176,20 +154,15 @@ void keyPressed()
     if (key == 'n' || key == 'N') // Create a new object
     {    
         // HOMEWORK-1-a Write a new class TennisBall, and create a tennis ball
-        //   instead of a pink soccer ball here.
+        //   instead of a brick here.
         // Hint: start by copying SoccerBall. Wait a minute ...
         //   Are you allowed to copy SoccerBall, or even modify it?! 
-        //   Read on at TOUR-12.
+        //   Read on at TOUR-10.
         
-        SoccerBall thing = new SoccerBall(40, #FC8EAC); // Flamingo pink, see http://latexcolor.com/
+        FBody thing = new Brick();
 
         thing.setPosition(int(random(80, width-80)), 30);
         world.add(thing);
-    }
-
-    if (key == 'v' || key == 'V') // Switch sound on or off
-    {
-        volume = 1 - volume;
     }
 
     if (key == 'd' || key == 'D') // Switch debug mode on or off
@@ -204,7 +177,7 @@ void keyPressed()
 }
 
 
-// TOUR-10 You already found out what happens if you right-click with the mouse,
+// TOUR-8 You already found out what happens if you right-click with the mouse,
 //   didn't you? If not, just try it ...
 void mousePressed()
 {
@@ -215,3 +188,21 @@ void mousePressed()
         world.add(nail);
     }
 }
+
+/* ----------------------------------------------------------------------
+ * This file is part of FisicaGame.
+ *
+ * FisicaGame is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+ 
