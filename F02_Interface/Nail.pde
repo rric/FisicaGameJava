@@ -1,7 +1,26 @@
 /* Nail.pde
- *
- * Copyright 2018-2021 Roland Richter
- *
+ * Copyright 2018-2022 Roland Richter
+ */
+
+public class Nail extends FCircle
+{
+    public Nail()
+    {
+        this(10, #4682B4); // Steel blue, see http://latexcolor.com/
+    }
+    
+    
+    public Nail(float diam, color clr)
+    {
+        super(diam);
+        this.setFillColor(clr);
+        
+        this.setStatic(true);
+        this.setDensity(3000.0);
+    }
+}
+
+/* ----------------------------------------------------------------------
  * This file is part of FisicaGame.
  *
  * FisicaGame is free software: you can redistribute it and/or modify
@@ -17,22 +36,4 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
-
-public class Nail extends FCircle
-{
-    public Nail()
-    {
-        this(10, #4682B4); // Steel blue, see http://latexcolor.com/
-    }
-    
-    
-    public Nail(float size, color col)
-    {
-        super(size);
-        this.setFillColor(col);
-        
-        this.setStatic(true);
-        this.setDensity(10000.0);
-    }
-}
+ 

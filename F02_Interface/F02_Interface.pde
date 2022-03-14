@@ -1,30 +1,16 @@
-/* FisicaGame.pde
- *
- * Copyright 2018-2021 Roland Richter
- *
- * This file is part of FisicaGame.
- *
- * FisicaGame is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty
- * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+/* F02_Interface.pde
+ * Copyright 2018-2022 Roland Richter
  */
+
+import fisica.*;
+import processing.sound.*;
 
 // TOUR-1 This sketch uses fisica, and, additionally, the Sound library which 
 //   is provided by _The Processing Foundation_, the organization behind the
 //   development of Processing, p5.js, etc. To learn more, visit their site
 //   https://processingfoundation.org/
 //   If you don't have the Sound library installed yet, do so now.
-import fisica.*;
-import processing.sound.*;
+
 
 FWorld world;
 
@@ -101,7 +87,7 @@ void setup()
 
 
 float volume = 1;         // Starts with sound on 
-color bgcolor = #dece27;  // Starts with a decent background color
+color bgcolor = #EFDECD;  // Starts with a decent background color, "Almond"
 
 boolean paused = false;
 boolean debug = false;
@@ -116,9 +102,9 @@ void drawBackground()
     float luminance = (0.299 * red(bgcolor) + 0.587 * green(bgcolor) + 0.114 * blue(bgcolor))/255.0;
     
     if (luminance > 0.5)   // bright background - black font
-       fill(color(0,0,0));
+       fill(color(0, 0, 0));
     else                   // dark background - white font
-       fill(color(255,255,255));
+       fill(color(255, 255, 255));
     
     textSize(12);
     textAlign(RIGHT);
@@ -129,9 +115,7 @@ void drawBackground()
 void draw() 
 {
     if (paused)
-    {
         return;
-    }
 
     drawBackground();
 
@@ -154,21 +138,15 @@ void draw()
     for (FBody b : bodies) 
     {   
         if (b instanceof Ticking) 
-        {
             ((Ticking) b).tick();
-        }
     }
 
     world.step();
 
     if (debug) 
-    {
         world.drawDebug();
-    } 
     else 
-    {
         world.draw();
-    }
 }
 
 
@@ -297,3 +275,20 @@ void mousePressed()
         world.add(nail);
     }
 }
+
+/* ----------------------------------------------------------------------
+ * This file is part of FisicaGame.
+ *
+ * FisicaGame is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */

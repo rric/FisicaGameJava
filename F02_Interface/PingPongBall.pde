@@ -1,7 +1,21 @@
 /* PingPongBall.pde
- *
- * Copyright 2018-2021 Roland Richter
- *
+ * Copyright 2018-2022 Roland Richter
+ */
+
+public class PingPongBall extends FCircle
+{
+    public PingPongBall()
+    {
+        super(16);
+        this.setFillColor(#FFFFFF); // white
+        
+        this.setDamping(0.2);
+        this.setDensity(300.0);
+        this.setRestitution(0.9);
+    }
+}
+
+/* ----------------------------------------------------------------------
  * This file is part of FisicaGame.
  *
  * FisicaGame is free software: you can redistribute it and/or modify
@@ -17,17 +31,4 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
-
-public class PingPongBall extends FCircle
-{
-    public PingPongBall()
-    {
-        super(16);
-        this.setFillColor(#FFFFFF); // white
-        
-        this.setDamping(0.2);
-        this.setDensity(300.0);
-        this.setRestitution(0.9);
-    }
-}
+ 
