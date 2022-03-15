@@ -24,8 +24,6 @@ public class SoapBubble extends FCircle implements Ticking, Resizable
     //   a little impulse: random in horizontal dirction, but always upwards.
     //   This lets SoapBubbles float through the air; otherwise, they would
     //   fall downward like anything else! (Try it out ...)
-    //   For details on how to generate random numbers, see 
-    //   https://processing.org/reference/random_.html
     public void tick()
     {
         this.addImpulse(random(-0.3, 0.3), -0.25);
