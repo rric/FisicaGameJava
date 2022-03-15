@@ -21,7 +21,7 @@ public class BurstBall extends SoccerBall implements Ticking
         //   "CC 0" here is short for "Creative Commons Zero", and basically
         //   means "public domain"; that is, I am free to re-use this sound 
         //   without mentioning the author. I do mention her/him, anyway: 
-        
+        //
         // video game >> burst2.wav by ReadeOnly, used under CC 0, from
         // https://freesound.org/s/186927/
         this.bang = new SoundFile(Fisica.parent(), "186927__readeonly__burst2.wav");

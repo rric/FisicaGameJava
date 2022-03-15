@@ -11,7 +11,6 @@ import processing.sound.*;
 //   https://processingfoundation.org/
 //   If you don't have the Sound library installed yet, do so now.
 
-
 FWorld world;
 
 // TOUR-15 These three balls are now declared here, outside the setup() function;
@@ -228,8 +227,8 @@ void keyPressed()
     }
     
     // HOMEWORK-2-a Add an interface ChameleonLike for objects which can change
-    //   their color. Let SoccerBall be ChameleonLike: if somebody presses 'c'
-    //   or 'C', SoccerBalls, and all other ChameleonLikes, should change color.
+    //   their color. Let SoccerBall be ChameleonLike: if somebody presses 'c' or 'C'
+    //   here, SoccerBalls, and all other ChameleonLikes, should change their color.
     //   Hint: this might be quite similar to Resizable ...
     
     // HOMEWORK-2-b Give the user some control over the red, green, and white ball:
@@ -238,7 +237,7 @@ void keyPressed()
     //   * redBall, greenBall, and whiteBall are now global variables which can be 
     //     accessed here; see TOUR-15
     //   * Have a second look at SoapBubble's tick() funtion to see how to add an
-    //     impluse to an object; or scrool back to setup() on how to set its velocity 
+    //     impluse to an object; or scroll back to setup() on how to set its velocity 
     if (key == CODED) 
     {
         if (keyCode == UP) 
