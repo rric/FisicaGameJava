@@ -8,9 +8,8 @@ public class SoapBubble extends FCircle implements Ticking, Resizable
 {
     public SoapBubble()
     {
-        this(38, color(random(256), random(256), random(256))); // Random color
+        this(38, color(231, 254, 255)); // Bubbles #E7FEFF, see http://latexcolor.com/
     }
-    
     public SoapBubble(float size, color col)
     {
         super(size);
