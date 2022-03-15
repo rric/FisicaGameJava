@@ -1,4 +1,4 @@
-/* F02_Interface.pde
+/* F02_Polymorphism.pde
  * Copyright 2018-2022 Roland Richter
  */
 
@@ -107,7 +107,7 @@ void drawBackground()
     
     textSize(12);
     textAlign(RIGHT);
-    text("FisicaGame\n[lesson: interface]", 0.99*width, 0.95*height);
+    text("FisicaGame\n[lesson: polymorphism]", 0.99*width, 0.95*height);
 }
 
 
