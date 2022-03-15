@@ -85,7 +85,6 @@ void setup()
 }
 
 
-float volume = 1;         // Starts with sound on 
 color bgcolor = #EFDECD;  // Starts with a decent background color, "Almond"
 
 boolean paused = false;
@@ -245,12 +244,6 @@ void keyPressed()
             
         }
         // etc.    
-    }
-
-
-    if (key == 'v' || key == 'V') // Switch sound on or off
-    {
-        volume = 1 - volume;
     }
 
     if (key == 'd' || key == 'D') // Switch debug mode on or off
