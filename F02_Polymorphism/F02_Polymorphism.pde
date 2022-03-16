@@ -87,7 +87,7 @@ void setup()
 
 color bgcolor = #EFDECD;  // Starts with a decent background color, "Almond"
 
-boolean paused = false;
+int paused = 0;
 boolean debug = false;
 
 
@@ -112,8 +112,11 @@ void drawBackground()
 
 void draw() 
 {
-    if (paused)
+    if (paused > 0)
+    {
+        paused -= 1;
         return;
+    }
 
     drawBackground();
 
@@ -150,12 +153,14 @@ void draw()
 
 void keyPressed()
 {
-    if (key == 'b' || key == 'B') // Change background color
+    // b/B - change background color
+    if (key == 'b' || key == 'B')
     {
         bgcolor = color(random(255), random(255), random(255));
     }
 
-    if (key == 'n' || key == 'N') // Create a new object
+    // n/N - create a new object
+    if (key == 'n' || key == 'N')
     {
         // TOUR-2 Here, a new object is created at random. It might be a new 
         //   Brick, or PingPongBall, or SoccerBall, ... we do not know yet.
@@ -189,7 +194,9 @@ void keyPressed()
     
     // TOUR-3 New as well: some objects are resizable now. Try it out first!
     //   ... funny, isn't it? Lets have a look how it works.
-    if (key == 'r' || key == 'R') // Resize all objects which are Resizable
+    
+    // r/R - resize all objects which are resizable    
+    if (key == 'r' || key == 'R')
     {
         // Resize all objects by the same random factor, between 66.67 % and 150 %
         float factor = random(0.6667, 1.5);
@@ -246,14 +253,23 @@ void keyPressed()
         // etc.    
     }
 
-    if (key == 'd' || key == 'D') // Switch debug mode on or off
+    // d/D - switch debug mode on or off
+    if (key == 'd' || key == 'D')
     {
         debug = !debug;
     }
 
-    if (key == 'p' || key == 'P') // Switch between paused and not paused
+     // p/P - pause for approx. 24 hours (at 60 fps), or re-start
+    if (key == 'p' || key == 'P')
     {
-        paused = !paused;
+        paused = (paused > 0 ? 0 : 24*60*60*60);
+    }
+    
+    // s/S - save the current frame, and pause for approx. 0.5 sec
+    if (key == 's' || key == 'S')
+    {
+        saveFrame("fisica-###.jpg");
+        paused = 30;
     }
 }
 
