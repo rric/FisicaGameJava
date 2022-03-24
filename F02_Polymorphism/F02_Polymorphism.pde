@@ -106,7 +106,8 @@ void drawBackground()
     
     textSize(12);
     textAlign(RIGHT);
-    text("FisicaGame\n[lesson: polymorphism]", 0.99*width, 0.95*height);
+    text("FisicaGame @" + nf(frameRate, 1, 1) + "fps\n[lesson: polymorphism]", 
+         0.99*width, 0.95*height);
 }
 
 
@@ -127,7 +128,7 @@ void draw()
     //   gives the impression of smooth motion; the drawing frequency is called
     //   frame rate. Processing provides a variable to inspect this value, see
     //   https://processing.org/reference/frameRate.html
-    //   At my computer, I get about 50 to 60 frames per second. 
+    //   You see the fps rate in the lower right corner of the background.
     //
     //   As already mentioned, our world holds a list of all objects. Here, we
     //   get those objects implementing the Ticking interface, and inform them
@@ -233,17 +234,21 @@ void keyPressed()
     }
     
     // HOMEWORK-2-a Add an interface ChameleonLike for objects which can change
-    //   their color. Let SoccerBall be ChameleonLike: if somebody presses 'c' or 'C'
-    //   here, SoccerBalls, and all other ChameleonLikes, should change their color.
-    //   Hint: this might be quite similar to Resizable ...
+    //   their color. If somebody presses 'c' or 'C' here, SoccerBalls (and, 
+    //   at your choice, other objects) should change their color.
+    //   Hint: this might be quite similar to SoccerBall.resize() ...
     
-    // HOMEWORK-2-b Give the user some control over the red, green, and white ball:
-    //   * Down here you see how to use special keys, such as the UP, DOWN, LEFT,
-    //     and RIGHT keys; see also https://processing.org/reference/keyCode.html
+    // HOMEWORK-2-b If a BurstBall bursts, display the word "BANG" or "BOOM", and/or
+    // an explosion picture such as https://openclipart.org/detail/284551/boom
+    // at the screen for some moments.
+    
+    // HOMEWORK-2-c Give the user some control over the red, green, and white ball:
+    //   * Use special keys, such as the UP, DOWN, LEFT, and RIGHT keys,
+    //     see also https://processing.org/reference/keyCode.html
     //   * redBall, greenBall, and whiteBall are now global variables which can be 
-    //     accessed here; see TOUR-15
-    //   * Have a second look at SoapBubble's tick() funtion to see how to add an
-    //     impluse to an object; or scroll back to setup() on how to set its velocity 
+    //     accessed here; see TOUR-12
+    //   * You might change the position, or the velocity of the balls; or add an
+    //     impulse to an object (see SoapBubble.tick())
     if (key == CODED) 
     {
         if (keyCode == UP) 
