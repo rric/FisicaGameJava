@@ -10,10 +10,11 @@ public class SoapBubble extends FCircle implements Ticking, Resizable
     {
         this(38, color(231, 254, 255)); // Bubbles #E7FEFF, see http://latexcolor.com/
     }
-    public SoapBubble(float size, color col)
+    
+    public SoapBubble(float diam, color clr)
     {
-        super(size);
-        this.setFillColor(col); 
+        super(diam);
+        this.setFillColor(clr); 
         
         this.setDamping(0.2);
         this.setDensity(1.0);

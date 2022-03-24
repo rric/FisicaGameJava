@@ -11,9 +11,9 @@ public class BurstBall extends SoccerBall implements Ticking
     }
 
 
-    public BurstBall(float size, color col, int maxAge)
+    public BurstBall(float diam, color clr, int maxAge)
     {
-        super(size, col);
+        super(diam, clr);
 
         // TOUR-12 Freesound is a collaborative database of audio snippets, 
         //   samples, recordings, etc., all released under some permisive 
