@@ -1,7 +1,16 @@
 /* Sounding.pde
- *
- * Copyright 2018-2021 Roland Richter
- *
+ * Copyright 2018-2022 Roland Richter
+ */
+
+
+// TOUR-6 Sounding is an interface; all classes which implement it have
+//   the playSound() method to, well, play a sound with a certain loudness.
+public interface Sounding
+{
+    public void playSound(float amplitude);
+}
+
+/* ----------------------------------------------------------------------
  * This file is part of FisicaGame.
  *
  * FisicaGame is free software: you can redistribute it and/or modify
@@ -17,10 +26,3 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
-// TOUR-6 Sounding is an interface; all classes which implement it have
-//   the playSound() method to, well, play a sound with a certain loudness.
-public interface Sounding
-{
-    public void playSound(float amplitude);
-}

@@ -1,7 +1,42 @@
 /* Brick.pde
- *
- * Copyright 2018-2021 Roland Richter
- *
+ * Copyright 2018-2022 Roland Richter
+ */
+
+
+public class Brick extends FBox implements Sounding
+{  
+    private SoundFile sound;
+    
+    public Brick()
+    {
+        this(45, 20, #CB4154); // Brick red, see http://latexcolor.com/
+    }
+    
+    
+    public Brick(float w, float h, color clr)
+    {
+        super(w, h);
+        
+        this.setFillColor(clr);
+        
+        this.setDamping(0.2);
+        this.setDensity(200000.0);
+        this.setRestitution(0.0);
+        
+        // Brick dropped on other bricks by jackmurrayofficial used under CC 0
+        // https://freesound.org/s/429402/
+        this.sound = new SoundFile(Fisica.parent(), "429402__jackmurrayofficial__brick-dropped-on-other-bricks_cut.wav");
+    }
+    
+    
+    public void playSound(float amplitude)
+    {
+        this.sound.amp(amplitude);
+        this.sound.play();
+    }
+}
+
+/* ----------------------------------------------------------------------
  * This file is part of FisicaGame.
  *
  * FisicaGame is free software: you can redistribute it and/or modify
@@ -17,36 +52,4 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
-
-public class Brick extends FBox implements Sounding
-{  
-    private SoundFile sound;
-    
-    public Brick()
-    {
-        this(45, 20, #CB4154); // Brick red, see http://latexcolor.com/
-    }
-    
-    
-    public Brick(float w, float h, color col)
-    {
-        super(w, h);
-        this.setFillColor(col);
-        
-        this.setDamping(0.2);
-        this.setDensity(20000.0);
-        this.setRestitution(0.0);
-        
-        // Brick dropped on other bricks by jackmurrayofficial used under CC 0
-        // https://freesound.org/s/429402/
-        this.sound = new SoundFile(Fisica.parent(), "429402__jackmurrayofficial__brick-dropped-on-other-bricks_cut.wav");
-    }
-    
-    
-    public void playSound(float amplitude)
-    {
-        this.sound.amp(amplitude);
-        this.sound.play();
-    }
-}
+ 

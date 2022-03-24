@@ -118,7 +118,7 @@ void draw()
     {   
         if (b instanceof Ticking) 
             ((Ticking) b).tick();
-        }
+    }
 
     world.step();
 
@@ -133,11 +133,9 @@ void draw()
 //   keyboard events". An _event_ is some kind of _message_ which is created by
 //   the _sender_, transmitted over a _channel_, and received by a _receiver_, or
 //   several receivers. This _pattern_ is so common that it has many names, e.g.,
-//
 //   - event handling: event source, control -> event handler
 //   - publish–subscribe: publisher -> subscriber
 //   - observer pattern: subject -> observer, listener
-//
 //   In the sequel, I will use the words "sender", "message", and "receiver".
 void keyPressed()
 {
@@ -165,18 +163,9 @@ void keyPressed()
         else
             thing = new SoapBubble();
 
-        // ... and at random position.
+        // ... and at a random position.
         thing.setPosition(int(random(80, width-80)), 30);
         world.add(thing);
-    }
-    
-    if (key == CODED) 
-    {
-        if (keyCode == UP) 
-        {
-            
-        }
-        // etc.    
     }
 
     // d/D - switch debug mode on or off

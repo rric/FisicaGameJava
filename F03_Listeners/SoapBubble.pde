@@ -1,7 +1,32 @@
 /* SoapBubble.pde
- *
- * Copyright 2018-2021 Roland Richter
- *
+ * Copyright 2018-2022 Roland Richter
+ */
+
+
+public class SoapBubble extends FCircle implements Ticking
+{
+    public SoapBubble()
+    {
+        this(38, color(231, 254, 255)); // Bubbles #E7FEFF, see http://latexcolor.com/
+    }
+    
+    public SoapBubble(float diam, color clr)
+    {
+        super(diam);
+        this.setFillColor(clr); 
+        
+        this.setDamping(0.2);
+        this.setDensity(1.0);
+        this.setRestitution(0.0f);
+    }
+    
+    public void tick()
+    {
+        this.addImpulse(random(-0.3, 0.3), -0.25);
+    }
+}
+
+/* ----------------------------------------------------------------------
  * This file is part of FisicaGame.
  *
  * FisicaGame is free software: you can redistribute it and/or modify
@@ -17,27 +42,4 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
-
-public class SoapBubble extends FCircle implements Ticking
-{
-    public SoapBubble()
-    {
-        this(38, color(random(256), random(256), random(256))); // Random color
-    }
-    
-    public SoapBubble(float size, color col)
-    {
-        super(size);
-        this.setFillColor(col); 
-        
-        this.setDamping(0.2);
-        this.setDensity(1.0);
-        this.setRestitution(0.0f);
-    }
-    
-    public void tick()
-    {
-        this.addImpulse(random(-0.3, 0.3), -0.25);
-    }
-}
+ 

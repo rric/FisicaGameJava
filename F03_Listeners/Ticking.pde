@@ -1,7 +1,15 @@
 /* Ticking.pde
- *
- * Copyright 2018-2021 Roland Richter
- *
+ * Copyright 2018-2022 Roland Richter
+ */
+
+
+public interface Ticking
+{
+    // tick() is called with every call of draw()
+    public void tick();
+}
+
+/* ----------------------------------------------------------------------
  * This file is part of FisicaGame.
  *
  * FisicaGame is free software: you can redistribute it and/or modify
@@ -17,10 +25,4 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
-
-public interface Ticking
-{
-    // tick() is called with every call of draw()
-    public void tick();
-}
+ 
