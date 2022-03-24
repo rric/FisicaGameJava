@@ -1,28 +1,13 @@
-/* FisicaGame.pde
+/* F03_Listeners.pde
  *
- * Copyright 2018-2021 Roland Richter
- *
- * This file is part of FisicaGame.
- *
- * FisicaGame is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty
- * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ * Copyright 2018-2022 Roland Richter
  */
 
-// TOUR-1 This sketch uses fisica, a 2D physics library by Ricard Marxer,
-//   and the Sound library, provided by The Processing Foundation.
 import fisica.*;
 import processing.sound.*;
 
+// TOUR-1 This sketch uses fisica, a 2D physics library by Ricard Marxer,
+//   and the Sound library, provided by The Processing Foundation.
 FWorld world;
 SoccerBall redBall, greenBall, whiteBall;
 
@@ -91,10 +76,9 @@ void setup()
 }
 
 
-float volume = 1;         // Starts with sound on 
-color bgcolor = #dece27;  // Starts with a decent background color
+color bgcolor = #EFDECD;  // Starts with a decent background color, "Almond"
 
-boolean paused = false;
+int paused = 0;
 boolean debug = false;
 
 
@@ -107,9 +91,9 @@ void drawBackground()
     float luminance = (0.299 * red(bgcolor) + 0.587 * green(bgcolor) + 0.114 * blue(bgcolor))/255.0;
     
     if (luminance > 0.5)   // bright background - black font
-       fill(color(0,0,0));
+       fill(color(0, 0, 0));
     else                   // dark background - white font
-       fill(color(255,255,255));
+       fill(color(255, 255, 255));
     
     textSize(12);
     textAlign(RIGHT);
@@ -119,8 +103,9 @@ void drawBackground()
 
 void draw() 
 {
-    if (paused)
+    if (paused > 0)
     {
+        paused -= 1;
         return;
     }
 
@@ -132,21 +117,15 @@ void draw()
     for (FBody b : bodies) 
     {   
         if (b instanceof Ticking) 
-        {
             ((Ticking) b).tick();
         }
-    }
 
     world.step();
 
     if (debug) 
-    {
         world.drawDebug();
-    } 
     else 
-    {
         world.draw();
-    }
 }
 
 // TOUR-2 Lets have another look at the keyPressed() method. The documentation
@@ -162,12 +141,14 @@ void draw()
 //   In the sequel, I will use the words "sender", "message", and "receiver".
 void keyPressed()
 {
-    if (key == 'b' || key == 'B') // Change background color
+    // b/B - change background color
+    if (key == 'b' || key == 'B')
     {
         bgcolor = color(random(255), random(255), random(255));
     }
 
-    if (key == 'n' || key == 'N') // Create a new object
+    // n/N - create a new object
+    if (key == 'n' || key == 'N')
     {
         // Creates a new thing at random, ...
         FBody thing;
@@ -198,20 +179,23 @@ void keyPressed()
         // etc.    
     }
 
-
-    if (key == 'v' || key == 'V') // Switch sound on or off
-    {
-        volume = 1 - volume;
-    }
-
-    if (key == 'd' || key == 'D') // Switch debug mode on or off
+    // d/D - switch debug mode on or off
+    if (key == 'd' || key == 'D')
     {
         debug = !debug;
     }
 
-    if (key == 'p' || key == 'P') // Switch between paused and not paused
+    // p/P - pause for approx. 24 hours (at 60 fps), or re-start
+    if (key == 'p' || key == 'P')
     {
-        paused = !paused;
+        paused = (paused > 0 ? 0 : 24*60*60*60);
+    }
+    
+    // s/S - save the current frame, and pause for approx. 0.5 sec
+    if (key == 's' || key == 'S')
+    {
+        saveFrame("fisica-###.jpg");
+        paused = 30;
     }
 }
 
@@ -259,11 +243,11 @@ void contactStarted(FContact contact)
     //   the _instanceof_ keyword.
     boolean isHard1 = b1 instanceof Nail || b1 instanceof Plank || b1 instanceof Brick;
 
-    if (isHard1) 
+    if (isHard1)
     {
         if (b2 instanceof Sounding)
         {
-            ((Sounding) b2).playSound(volume);
+            ((Sounding) b2).playSound(1.0);
         }
     }
 
@@ -273,11 +257,11 @@ void contactStarted(FContact contact)
     //   the code from above, only with b1 and b2 switched.
     boolean isHard2 = b2 instanceof Nail || b2 instanceof Plank || b2 instanceof Brick;
 
-    if (isHard2) 
+    if (isHard2)
     {
         if (b1 instanceof Sounding) 
         {
-            ((Sounding) b1).playSound(volume);
+            ((Sounding) b1).playSound(1.0);
         }
     }
     
@@ -289,3 +273,22 @@ void contactStarted(FContact contact)
     //   it gets smaller and smaller, probably makes a hissing sound, until it disappears
     //   and is removed from this world ...
 }
+
+
+/* ----------------------------------------------------------------------
+ * This file is part of FisicaGame.
+ *
+ * FisicaGame is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty
+ * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+ 

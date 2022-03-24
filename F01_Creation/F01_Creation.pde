@@ -176,7 +176,7 @@ void keyPressed()
         debug = !debug;
     }
     
-     // p/P - pause for approx. 24 hours (at 60 fps), or re-start
+    // p/P - pause for approx. 24 hours (at 60 fps), or re-start
     if (key == 'p' || key == 'P')
     {
         paused = (paused > 0 ? 0 : 24*60*60*60);
